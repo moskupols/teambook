@@ -54,7 +54,7 @@ def addref(caption, outstream):
 
 def processwithcomments(caption, instream, outstream, listingslang = None):
     knowncommands = ['Author', 'Date', 'Description', 'Source', 'Time', 'Memory', 'License', 'Status', 'Usage']
-    requiredcommands = ['Author', 'Description']
+    requiredcommands = []
     includelist = []
     error = ""
     warning = ""

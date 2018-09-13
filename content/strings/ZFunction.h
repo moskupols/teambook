@@ -1,5 +1,4 @@
 /**
- * Author: Fedor Alekseev
  * License: Unlicense
  * Description: z[x] is max L: s[x:x+L] == s[:L]
  */

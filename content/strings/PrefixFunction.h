@@ -1,5 +1,4 @@
 /**
- * Author: Fedor Alekseev
  * License: Unlicense
  * Description: pi[x] is the length of the longest prefix of s that ends at x, other than s[0..x] itself
  */
