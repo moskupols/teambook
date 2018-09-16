@@ -7,51 +7,47 @@
  */
 #pragma once
 
-struct Node {
-	Node(int parent, Char ch): parent(parent), lastChar(ch) {
-		memset(trans, -1, sizeof trans);
-	}
-	int trans[Alph];
-	int link = 0, nextTerm = -1, termId = -1, parent;
-	Char lastChar;
-};
 struct AhoCorasick {
+	AhoCorasick(): n(1) {
+		n.reserve(TrieSize);
+	}
+
 	void addWord(const string& word, int id) {
 		int v = 0;
 		for (int ch : word) {
 			ch -= 'a';
 			auto& u = n[v].trans[ch];
-			if (u == -1) {
-				n.emplace_back(v, ch);
-				u = int(n.size() - 1);
+			if (!u) {
+				u = int(n.size());
+				n.emplace_back();
 			}
 			v = u;
 		}
 		n[v].termId = id;
 	}
+
 	void build() {
 		queue<int> q;
-		for (auto& tr : n[0].trans) {
-			if (tr != -1) {
-				q.push(tr);
-			} else
-				tr = 0;
-		}
-		while (!q.empty()) {
+		for (q.push(0); !q.empty(); q.pop()) {
 			auto v = q.front();
-			q.pop();
-			auto& li = n[v].link;
-			auto par = n[v].parent;
-			li = (par ? n[n[par].link].trans[n[v].lastChar] : 0);
-			n[v].nextTerm = n[li].termId != -1 ? li : n[li].nextTerm;
 			for (Char ch = 0; ch < Alph; ++ch) {
-				if (auto& u = n[v].trans[ch]; u != -1) {
-					q.push(u);
-				} else
-					u = n[li].trans[ch];
+				auto& u = n[v].trans[ch];
+				if (!u) {
+					u = n[n[v].link].trans[ch];
+					continue;
+				}
+				q.push(u);
+				auto i = n[u].link = (v ? n[n[v].link].trans[ch] : 0);
+				n[u].nextTerm = (n[i].termId >= 0 ? i : n[i].nextTerm);
 			}
 		}
 	}
+
 private:
-	vector<Node> n{{-1, 0}};
+	struct Node {
+		int trans[Alph]{};
+		int nextTerm = -1, termId = -1, link = 0;
+	};
+
+	vector<Node> n;
 };
