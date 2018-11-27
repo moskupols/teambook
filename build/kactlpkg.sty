@@ -21,7 +21,6 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage[normalem]{ulem}
 \usepackage{lastpage}
-\usepackage{marginnote}
 
 % Config commands
 \newcommand{\subtitle}[1]{
@@ -77,10 +76,10 @@
 \lhead{\@unishort{} (\@teamsurnames)}
 \chead{}
 \rhead{
-  {
-    \scriptsize
-    \textbf{\immediate\write18{python2 kactlprocessor.py --print-header "\splitbotmarks\hdrmark|\botmarks\hdrmark" -o header2.tmp}\immediate\input{header2.tmp}}
-  }
+  % {
+  %   \scriptsize
+  %   \textbf{\immediate\write18{python2 kactlprocessor.py --print-header "\splitbotmarks\hdrmark|\botmarks\hdrmark" -o header2.tmp}\immediate\input{header2.tmp}}
+  % }
   Page \thepage{} of \pageref{LastPage}
 }
 %\rhead{\thepage}

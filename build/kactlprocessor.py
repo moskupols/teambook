@@ -48,7 +48,7 @@ def ordoescape(input, esc=True):
 
 def addref(caption, outstream):
     caption = pathescape(caption).strip()
-    print(r"\kactlref{%s}" % caption, file=outstream)
+    print(r"\kactlref{%s}\addcontentsline{toc}{section}{%s}" % (caption, caption), file=outstream)
     with open('header.tmp', 'a') as f:
         f.write(caption + "\n")
 
