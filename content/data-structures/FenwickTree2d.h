@@ -14,8 +14,7 @@ struct Fenwick2D {
   vector<vector<int>> ys;
   vector<Fenwick> ft;
 
-  explicit Fenwick2D(int limx) : ys(limx) {
-  }
+  explicit Fenwick2D(int limx) : ys(limx) {}
 
   void fakeUpdate(int x, int y) {
     for (; x < sz(ys); x |= x + 1)

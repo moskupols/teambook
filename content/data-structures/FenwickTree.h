@@ -7,7 +7,6 @@
 #pragma once
 struct Fenwick {
   vector<i64> s;
-
   explicit Fenwick(int size): s(size, 0) {}
 
   void add(int at, i64 delta) {

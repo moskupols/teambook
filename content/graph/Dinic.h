@@ -72,10 +72,10 @@ i64 dinic(int s, int t) {
 } // namespace Dinic
 
 void test() {
-    Dinic::addEdge(0, 1, 1);
-    Dinic::addEdge(0, 2, 2);
-    Dinic::addEdge(2, 1, 1);
-    Dinic::addEdge(1, 3, 2);
-    Dinic::addEdge(2, 3, 1);
-    cout << Dinic::dinic(0, 3) << endl; // 3
+  Dinic::addEdge(0, 1, 1);
+  Dinic::addEdge(0, 2, 2);
+  Dinic::addEdge(2, 1, 1);
+  Dinic::addEdge(1, 3, 2);
+  Dinic::addEdge(2, 3, 1);
+  cout << Dinic::dinic(0, 3) << endl; // 3
 }
